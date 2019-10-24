@@ -13,9 +13,9 @@ defmodule Exsolr.Config do
   """
   def info do
     %{
-      hostname: hostname,
-      port: port,
-      core: core
+      hostname: hostname(),
+      port: port(),
+      core: core()
     }
   end
 

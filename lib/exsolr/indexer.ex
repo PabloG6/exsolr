@@ -7,8 +7,8 @@ defmodule Exsolr.Indexer do
   alias Exsolr.HttpResponse
 
   def add(document) do
-    json_docs_update_url
-    |> HTTPoison.post(encode(document), json_headers)
+    json_docs_update_url()
+    |> HTTPoison.post(encode(document), json_headers())
     |> HttpResponse.body
   end
 
@@ -26,7 +26,7 @@ defmodule Exsolr.Indexer do
   https://cwiki.apache.org/confluence/display/solr/Uploading+Data+with+Index+Handlers#UploadingDatawithIndexHandlers-JSONFormattedIndexUpdates
   """
   def delete_by_id(id) do
-    update_request(json_headers, delete_by_id_json_body(id))
+    update_request(json_headers(), delete_by_id_json_body(id))
   end
 
   @doc """

@@ -23,10 +23,9 @@ defmodule Exsolr do
   Send a search request to Solr.
 
   ## Example
-
       iex> Exsolr.get(q: "roses", fq: ["blue", "violet"])
       iex> Exsolr.get(q: "red roses", defType: "disMax")
-
+      {}
   """
   def get(query_params) do
     Searcher.get(query_params)
@@ -36,9 +35,8 @@ defmodule Exsolr do
   Adds the `document` to Solr.
 
   ## Example
-
       iex> Exsolr.add(%{id: 1, price: 1.00})
-
+      {}
   """
   def add(document) do
     Indexer.add(document)
