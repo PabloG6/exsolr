@@ -8,7 +8,7 @@ Port of [RSolr](https://github.com/rsolr/rsolr) to Elixir
 
 ```elixir
 def deps do
-  [{:exsolr, git: "http://github.com/dcarneiro/exsolr"}]
+  [{:exsolr, git: "http://github.com/PabloG6/exsolr"}]
 end
 ```
 
