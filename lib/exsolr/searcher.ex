@@ -18,9 +18,9 @@ defmodule Exsolr.Searcher do
   """
   def get(params) do
     params
-    |> build_solr_query
-    |> do_search
-    |> extract_response
+    |> build_solr_query()
+    |> do_search()
+    |> extract_response()
   end
 
   @doc """
@@ -56,7 +56,7 @@ defmodule Exsolr.Searcher do
   end
 
   defp add_default_params(params) do
-    default_parameters
+    default_parameters()
     |> Keyword.merge(params)
   end
 
@@ -98,7 +98,7 @@ defmodule Exsolr.Searcher do
     end
   end
 
-  defp extract_mlt_result(mlt) do 
+  defp extract_mlt_result(mlt) do
     result =
     for k <- Map.keys(mlt), do: get_in(mlt, [k, "docs"])
     result |> List.flatten

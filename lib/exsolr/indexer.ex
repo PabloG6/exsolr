@@ -35,8 +35,8 @@ defmodule Exsolr.Indexer do
   https://wiki.apache.org/solr/FAQ#How_can_I_delete_all_documents_from_my_index.3F
   """
   def delete_all do
-    update_request(xml_headers, delete_all_xml_body)
-    commit
+    update_request(xml_headers(), delete_all_xml_body())
+    commit()
   end
 
   @doc """
@@ -47,9 +47,9 @@ defmodule Exsolr.Indexer do
   end
 
   defp update_request(headers, body) do
-    Config.update_url
+    Config.update_url()
     |> HTTPoison.post(body, headers)
-    |> HttpResponse.body
+    |> HttpResponse.body()
   end
 
   defp json_headers, do: [{"Content-Type", "application/json"}]
@@ -70,7 +70,7 @@ defmodule Exsolr.Indexer do
   def delete_by_id_json_body(id) when is_integer(id)  do
     id
     |> Integer.to_string()
-    |> delete_by_id_json_body
+    |> delete_by_id_json_body()
   end
   def delete_by_id_json_body(id) do
     {:ok, body} = %{delete: %{id: id}}
