@@ -32,7 +32,7 @@ defmodule Exsolr.Config do
       "http://localhost:8983/solr/elixir_test/select"
 
   """
-  def select_url, do: "#{base_url}/select"
+  def select_url, do: "#{base_url()}/select"
 
   @doc """
   Returns the base url to do `update` queries to solr
@@ -42,8 +42,8 @@ defmodule Exsolr.Config do
       iex> Exsolr.Config.update_url
       "http://localhost:8983/solr/elixir_test/update"
   """
-  def update_url, do: "#{base_url}/update"
+  def update_url, do: "#{base_url()}/update"
 
-  defp base_url, do: "http://#{hostname}:#{port}/solr/#{core}"
+  defp base_url, do: "http://#{hostname()}:#{port()}/solr/#{core()}"
 end
 
