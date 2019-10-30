@@ -1,4 +1,4 @@
-defmodule Exsolr.Indexer do
+  defmodule Exsolr.Indexer do
   @moduledoc """
   Provides functions that write documents to Solr
   """
@@ -10,6 +10,7 @@ defmodule Exsolr.Indexer do
     json_docs_update_url()
     |> HTTPoison.post(encode(document), json_headers())
     |> HttpResponse.body
+    |> Poison.decode!
   end
 
   @doc """

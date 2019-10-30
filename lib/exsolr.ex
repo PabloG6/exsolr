@@ -24,8 +24,9 @@ defmodule Exsolr do
 
   ## Example
       iex> Exsolr.get(q: "roses", fq: ["blue", "violet"])
-      iex> Exsolr.get(q: "red roses", defType: "disMax")
-      {}
+      iex>  %{"docs" => [], "numFound" => _numFound, "start" => _start} = Exsolr.get(q: "red roses", defType: "dismax")
+      iex> :ok
+      :ok
   """
   def get(query_params) do
     Searcher.get(query_params)
@@ -35,8 +36,9 @@ defmodule Exsolr do
   Adds the `document` to Solr.
 
   ## Example
-      iex> Exsolr.add(%{id: 1, price: 1.00})
-      {}
+      iex> %{"responseHeader" => %{"QTime" => _qTime, "status" => _status}} = Exsolr.add(%{id: 1, price: 1.00})
+      iex> :ok
+      :ok
   """
   def add(document) do
     Indexer.add(document)
